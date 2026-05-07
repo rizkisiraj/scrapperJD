@@ -1,0 +1,28 @@
+{
+  "name": "jdsports-sneaker-heatmap",
+  "version": "1.0.0",
+  "description": "Scrapes JD Sports sneaker availability across MY, ID, SG and exposes a regional heatmap API",
+  "main": "src/api/server.js",
+  "scripts": {
+    "start": "node src/api/server.js",
+    "dev": "node --watch src/api/server.js",
+    "scrape": "node src/scrapper/jdSportsScraper.js",
+    "lint": "eslint src/**/*.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "node-cron": "^3.0.3",
+    "pino": "^8.17.0",
+    "pino-pretty": "^10.3.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
