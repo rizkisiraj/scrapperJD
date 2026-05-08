@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3003"
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  scheduler:
+    build: .
+    command: node src/scheduler/scrapeJob.js
+    env_file:
+      - .env
+    restart: unless-stopped

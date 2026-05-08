@@ -7,7 +7,7 @@
 // If one region fails, the error is logged and the job continues with the next.
 
 require('dotenv').config();
-const http = require('http');
+const https = require('https');
 const cron = require('node-cron');
 const { run } = require('../scrapper/jdSportsScraper');
 const logger = require('../config/logger');
@@ -16,8 +16,7 @@ const logger = require('../config/logger');
 // Uses Node's built-in http — no extra dependency needed.
 const pingRevalidate = () => {
   const options = {
-    hostname: 'localhost',
-    port: 3000,
+    hostname: 'kickmap.sijar.tech',
     path: '/api/revalidate',
     method: 'POST',
     headers: {
@@ -25,7 +24,7 @@ const pingRevalidate = () => {
     },
   };
 
-  const req = http.request(options, (res) => {
+  const req = https.request(options, (res) => {
     logger.info({ status: res.statusCode }, 'revalidate ping sent');
   });
 
